@@ -14,7 +14,7 @@ public class SingletonManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            Debug.Log("Key Pressed");
+            //Debug.Log("Key Pressed");
             SingleCube.Instance.Move();
         }
     }

@@ -5,21 +5,20 @@ using UnityEngine;
 public class SingleCube : MonoBehaviour
 {
     private static SingleCube _instance;
+
     public static SingleCube Instance {
         get {
             if (_instance == null) {
-                GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                cube.name = "SingleCube";
-                cube.transform.position = new Vector3(0f, 0f, 0f);
-                cube.AddComponent<SingleCube>();
+                var obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                obj.AddComponent<SingleCube>();
             }
             return _instance;
         }
     }
-    
+
     void Awake() {
         if (_instance != null && _instance != this) {
-            Debug.Log("Destroy Duplicate Cude");
+            Debug.Log("Destroy Duplicate");
             Destroy(this.gameObject);
         } else {
             _instance = this;
