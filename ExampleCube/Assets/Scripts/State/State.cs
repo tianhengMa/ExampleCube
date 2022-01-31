@@ -1,18 +1,25 @@
 using System.Collections;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
-public class State : MonoBehaviour
+public abstract class State
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    protected StateManager _stateManager;
+    protected GameObject _apple;
+    protected MaterialPropertyBlock _propertyBlock;
+    protected int _layerMask = 1 << 6;
+    public State(StateManager stateManager) {
+        this._stateManager = stateManager;
+        _apple = stateManager.Apple;
+        _propertyBlock = new MaterialPropertyBlock();
+    }
+    public virtual void StartState() {
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public virtual async void UpdateState() {
+        await Task.Yield();
+    }
+
+    public virtual void CheckState(){
     }
 }
